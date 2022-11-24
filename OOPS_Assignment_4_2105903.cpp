@@ -2,31 +2,31 @@
 #include<math.h>
 using namespace std;
 
-template<class T>
-class Complex
+template<class T>                                                                               //Template
+class Complex                                                                                   //Class
 {
-    protected:
+    protected:                                                                                  //Data Abstraction
     T real;
     T imag;
 
     public:
-    Complex()
+    Complex()                                                                                   //Constructor
     {
         real=0;
         imag=0;
     }
 
-    Complex(T real, T imag)
+    Complex(T real, T imag)                                                                     //Constructor
     {
         this->real=real;
         this->imag=imag;
     }
 
-    template<typename TT>
-    friend int check_valid(Complex<TT> &C1, Complex<TT> &C2, char oper);
+    template<typename TT>                                                                       //Template
+    friend int check_valid(Complex<TT> &C1, Complex<TT> &C2, char oper);                        //Friend Function
 
-    template<typename TT>
-    Complex<TT> operator+(Complex<TT> C)
+    template<typename TT>                                                                       //Template
+    Complex<TT> operator+(Complex<TT> C)                                                        //Operator Overloading
     {
         Complex<TT> result;
         if(check_valid(*this, C, '+')==1)
@@ -41,8 +41,8 @@ class Complex
         return result;
     }
 
-    template<typename TT>
-    Complex<TT> operator-(Complex<TT> C)
+    template<typename TT>                                                                       //Template
+    Complex<TT> operator-(Complex<TT> C)                                                        //Operator Overloading
     {
         Complex<TT> result;
         if(check_valid(*this, C, '-')==1)
@@ -57,8 +57,8 @@ class Complex
         return result;
     }
 
-    template<typename TT>
-    Complex<TT> operator*(Complex<TT> C)
+    template<typename TT>                                                                       //Template
+    Complex<TT> operator*(Complex<TT> C)                                                        //Operator Overloading
     {
         Complex<TT> result;
         if(check_valid(*this, C, '*')==1)
@@ -73,8 +73,8 @@ class Complex
         return result;
     }
 
-    template<typename TT>
-    Complex<float> operator/(Complex<TT> C)
+    template<typename TT>                                                                       //Template
+    Complex<float> operator/(Complex<TT> C)                                                     //Operator Overloading
     {
         if(check_valid(*this, C, '+')==1)
         {
@@ -96,22 +96,22 @@ class Complex
         }
     }
 
-    template<typename TT>
-    friend istream& operator>>(istream &cin, Complex<TT> &C);
+    template<typename TT>                                                                       //Template
+    friend istream& operator>>(istream &cin, Complex<TT> &C);                                   //Friend Function
 
-    template<typename TT>
-    friend ostream& operator<<(ostream &cout, Complex<TT> &C);
+    template<typename TT>                                                                       //Template
+    friend ostream& operator<<(ostream &cout, Complex<TT> &C);                                  //Friend Function
 };
 
-template<typename TT>
-istream& operator>>(istream &cin, Complex<TT> &C)
+template<typename TT>                                                                           //Template
+istream& operator>>(istream &cin, Complex<TT> &C)                                               //Operator Overloading
 {
     long long value;
 
     cout<<"\nReal Part: ";
     cin>>value;
     
-        try
+        try                                                                                     //Exception Handling
         {
             if(value>pow(2, (8*sizeof(TT)-1)))
             {
@@ -130,7 +130,7 @@ istream& operator>>(istream &cin, Complex<TT> &C)
     cout<<"Imaginary Part: ";
     cin>>value;
 
-        try
+        try                                                                                     //Exception Handling
         {
             if(value>pow(2, 8*sizeof(TT)))
             {
@@ -149,8 +149,8 @@ istream& operator>>(istream &cin, Complex<TT> &C)
     return cin;
 }
 
-template<typename TT>
-ostream& operator<<(ostream &cout, Complex<TT> &C)
+template<typename TT>                                                                           //Template
+ostream& operator<<(ostream &cout, Complex<TT> &C)                                              //Operator Overloading
 {
     if(C.real!=0)
     {
@@ -174,7 +174,7 @@ ostream& operator<<(ostream &cout, Complex<TT> &C)
     return cout;
 }
 
-template<typename TT>
+template<typename TT>                                                                           //Template
 int check_valid(Complex<TT> &C1, Complex<TT> &C2, char oper)
 {
     switch(oper)
@@ -240,7 +240,7 @@ int check_valid(Complex<TT> &C1, Complex<TT> &C2, char oper)
 
 int main()
 {
-    Complex<int> C1, C2;
+    Complex<int> C1, C2;                                                                        //Template Object Creation
     char oper;
 
     cout<<"\nComplex Number Calculator\n\n";
